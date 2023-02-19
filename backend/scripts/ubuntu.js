@@ -9,6 +9,17 @@ async function main(){
      await UbuntuTokenContractDeploy.deployed();
     //console.address
     console.log("UbuntuTokenContractAddress:", UbuntuTokenContractDeploy.address);
+    /**
+     * deploy for the UBUNTU Contract DAO
+     */
+    //get the contract for UBUNTUDAO
+    const UbuntuDAOContract = await ethers.getContractFactory("UbuntuDAO");
+    //deploy contract
+    const UbuntuDAOContractDeploy = await UbuntuDAOContract.deploy();
+    //await deployment
+     await UbuntuDAOContractDeploy.deployed();
+    //console.address
+    console.log("UbuntuDAOContractAddress:", UbuntuDAOContractDeploy.address);
 }
 //call main
 main().then(()=>
