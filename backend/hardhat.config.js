@@ -6,11 +6,12 @@ const KEY = process.env.PRIVATE_KEY;
 module.exports = {
   solidity: "0.8.17",
   networks:{
-    fantomtest:{
-      url: "https://rpc.testnet.fantom.network",
+    fantomTestnet :{
+      url: `https://rpc.ankr.com/fantom_testnet`,
+      chainId: 4002,
       accounts: [KEY],
-      chainId: 0xfa2,
+      
     },
     
-  }
+  },
 };
