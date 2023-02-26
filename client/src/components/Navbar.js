@@ -10,9 +10,9 @@ const Navbar = () => {
 
   return (
     <main className="w-full h-[50px]">
-      <section className="container mx-auto py-5  flex items-center">
-        <article className="flex items-center w-3/12">
-          <h1 className="text-orange font-bold text-3xl cursor-pointer">
+      <section className="container mx-auto py-2 md:py-5 px-3  flex justify-between items-center">
+        <article className="flex items-center md:w-3/12">
+          <h1 className="text-orange font-bold text-xl md:text-3xl cursor-pointer">
             Ubuntu Dao
           </h1>
         </article>
@@ -29,7 +29,7 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </article>
-        <article className="flex items-center justify-end w-3/12">
+        <article className="md:flex hidden items-center justify-end w-3/12">
           <button className="py-2 px-4 rounded-3xl cursor-pointer w-fit bg-button text-white font-medium">
             Get Started
           </button>
@@ -37,15 +37,15 @@ const Navbar = () => {
         <article className="md:hidden">
           <div
             onClick={expand}
-            className="space-y-1 p-1.5 bg-white md:hidden cursor-pointer z-50"
+            className="space-y-1 p-1.5 md:hidden cursor-pointer z-50"
           >
-            <div className="w-6 h-0.5 bg-black"></div>
-            <div className="w-6 h-0.5 bg-black"></div>
-            <div className="w-6 h-0.5 bg-black"></div>
+            <div className="w-6 h-0.5 bg-text"></div>
+            <div className="w-6 h-0.5 bg-text"></div>
+            <div className="w-6 h-0.5 bg-text"></div>
           </div>
           {isExpanded && (
             <div>
-              <ul className=" absolute top-0 left-0 bg-button text-white text-center rounded-b-1xl w-full space-y-10 p-10 z-20">
+              <ul className=" absolute top-0 left-0 text-text bg-landing text-center rounded-b-1xl w-full space-y-5 p-10 z-20">
                 <div className="flex justify-start" onClick={expand}>
                   {" "}
                   <i className="bx bx-x bx-md text-white"></i>
@@ -60,7 +60,7 @@ const Navbar = () => {
                   className="cursor-pointer hover:text-textLight"
                   onClick={expand}
                 >
-                  <a href={`#about`}>Reports</a>
+                  <a href={`#about`}>Platform</a>
                 </li>
                 <li
                   className="cursor-pointer hover:text-textLight"

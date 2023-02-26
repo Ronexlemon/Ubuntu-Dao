@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 
 const LandingPage = () => {
   return (
-    <main className=" bg-landing">
+    <main className="bg-landing">
       <Navbar />
       <section className="md:h-[80vh] overflow-hidden flex items-center">
         <section className="container mx-auto flex flex-col justify-between md:flex-row items-center">
@@ -23,8 +23,8 @@ const LandingPage = () => {
               </button>
             </article>
           </article>
-          <article className="w-full p-5 md:w-6/12">
-            <img className="w-5/6" src={MainScreen} alt="landing" />
+          <article className="w-full  p-5 md:w-6/12">
+            <img className="w-full md:w-5/6" src={MainScreen} alt="landing" />
           </article>
         </section>
       </section>
