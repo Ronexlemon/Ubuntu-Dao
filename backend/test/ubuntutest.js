@@ -39,4 +39,7 @@ it("should check only the owner can mint tokens to address", async function(){
         .to.be.revertedWith("only the owner can mint");
 })
 
+it("should activate the tokens by only the owner", async function(){
+    await expect(ubuntuDaoContract.connect(otherAccount).activateTokens(ubuntuTokenContract.address)).to.be.revertedWith("only the owner can mint")
+})
 })
