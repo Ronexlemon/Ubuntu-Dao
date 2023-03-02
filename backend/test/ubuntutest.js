@@ -33,5 +33,10 @@ it("should mint tokens to address", async function(){
     const result = await ubuntuTokenContract.totalSupply();
     expect(await result).to.equal(BigInt(1000*10**18) );
 })
+it("should check only the owner can mint tokens to address", async function(){
+    const value = BigInt(1000);
+    await expect(ubuntuTokenContract.connect(otherAccount).mintTokens(ubuntuDaoContract.address, value))
+        .to.be.revertedWith("only the owner can mint");
+})
 
 })
