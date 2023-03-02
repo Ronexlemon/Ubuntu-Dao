@@ -5,6 +5,7 @@ import { BrowserProvider, Contract } from "ethers";
 
 const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [userAccount,setUserAccount] = useState();
   const Web3ModalRef = useRef();
 
   const expand = () => {
@@ -16,6 +17,9 @@ const Navbar = () => {
     const web3Provider = new BrowserProvider(provider);
     // check if network is fantomTestnet
     const { chainId } = await web3Provider.getNetwork();
+    const signer = web3Provider.getSigner();
+    const accounts = await signer.getAddress();
+    setUserAccount(accounts);
     if (chainId !== 4002) {
       window.alert("Change network to FantomTestnet");
       throw new Error("Change network to FantomTestnet ");
@@ -57,7 +61,7 @@ const Navbar = () => {
           </ul>
         </article>
         <article className="md:flex hidden items-center justify-end w-3/12">
-          <button className="py-2 px-4 rounded-3xl cursor-pointer w-fit bg-button text-white font-medium">
+          <button   className="py-2 px-4 rounded-3xl cursor-pointer w-fit bg-button text-white font-medium">
             Get Started
           </button>
         </article>
