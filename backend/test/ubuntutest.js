@@ -67,6 +67,14 @@ it("should be able to write data", async function(){
    
     expect(results[0].message).to.equal(data.name);
 })
+it("should be able to readOnly User Information", async function(){
+    const data =
+    {name:"ronex",
+imageurl:"htpps://ronex"}
+    const results = await ubuntuDaoContract.connect(otherAccount).readUserInfomation();
+    expect(results[0].imageurl).to.equal(data.imageurl)
+})
+it("should be able to ")
 // it("should check if user already join community", async function(){
 //     await expect(ubuntuDaoContract.joinUbuntuDao()).to.be.revertedWith("already a member")
 // })
