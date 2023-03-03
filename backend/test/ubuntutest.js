@@ -44,15 +44,18 @@ it("should check only the owner can mint tokens to address", async function(){
 it("should activate the tokens by only the owner", async function(){
     await expect(ubuntuDaoContract.connect(otherAccount).activateTokens(ubuntuTokenContract.address)).to.be.revertedWith("only the owner can mint")
 })
-// it("should check if user already join community", async function(){
-//      // Add the user to the mapping
-//   await ubuntuDaoContract.joinUbuntuDao({ from: anotheraccount.address });
+it("should check if user already join community", async function(){
+     // Add the user to the mapping
+     const value = BigInt(1000);
+     await ubuntuTokenContract.connect(owner).mintTokens(ubuntuDaoContract.address, value)
+ 
+  await ubuntuDaoContract.connect(owner).activateTokens(ubuntuTokenContract.address)
+  await ubuntuDaoContract.connect(otherAccount).joinUbuntuDao();
+  
 
-//   // Check that the user exists in the mapping
-//   const userExists = await ubuntuDaoContract.ubuntuMember(anotheraccount.address);
-//   console.log("user",userExists);
-//   expect(userExists).to.equal(true);
-// })
+  
+ expect( await ubuntuDaoContract.ubuntuMember(otherAccount.address)).to.equal(true);
+})
 // it("should check if user already join community", async function(){
 //     await expect(ubuntuDaoContract.joinUbuntuDao()).to.be.revertedWith("already a member")
 // })
