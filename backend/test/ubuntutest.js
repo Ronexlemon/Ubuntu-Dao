@@ -74,7 +74,11 @@ imageurl:"htpps://ronex"}
     const results = await ubuntuDaoContract.connect(otherAccount).readUserInfomation();
     expect(results[0].imageurl).to.equal(data.imageurl)
 })
-it("should be able to ")
+it("should be able to vote for information ", async function(){
+    await  ubuntuDaoContract.connect(otherAccount).upvoteOrdownVote(true,0);
+    const results = await ubuntuDaoContract.voted(otherAccount.address)
+    expect(results).to.equal(true);
+})
 // it("should check if user already join community", async function(){
 //     await expect(ubuntuDaoContract.joinUbuntuDao()).to.be.revertedWith("already a member")
 // })
