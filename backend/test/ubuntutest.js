@@ -47,7 +47,7 @@ it("should activate the tokens by only the owner", async function(){
 it("should check if user already join community", async function(){
      // Add the user to the mapping
      const value = BigInt(1000);
-     await ubuntuTokenContract.connect(owner).mintTokens(ubuntuDaoContract.address, value)
+//      await ubuntuTokenContract.connect(owner).mintTokens(ubuntuDaoContract.address, value)
  
   await ubuntuDaoContract.connect(owner).activateTokens(ubuntuTokenContract.address)
   await ubuntuDaoContract.connect(otherAccount).joinUbuntuDao();
@@ -55,6 +55,17 @@ it("should check if user already join community", async function(){
 
   
  expect( await ubuntuDaoContract.ubuntuMember(otherAccount.address)).to.equal(true);
+})
+it("should be able to write data", async function(){
+
+    const data =
+        {name:"ronex",
+    imageurl:"htpps://ronex"}
+    
+    await ubuntuDaoContract.connect(otherAccount).getInformation(data.name,data.imageurl);
+    const results = await ubuntuDaoContract.connect(otherAccount).readInformation();
+   
+    expect(results[0].message).to.equal(data.name);
 })
 // it("should check if user already join community", async function(){
 //     await expect(ubuntuDaoContract.joinUbuntuDao()).to.be.revertedWith("already a member")
