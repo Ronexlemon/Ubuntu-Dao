@@ -9,10 +9,16 @@ module.exports = {
       },
       backgroundColor: {
         button: "#000",
-        section: "#F1F1F4",
+        section: "#F3F3F3",
+        sidebg: "#FEE1D0",
+        sideHover: "#ece8ff",
+        dashboardButton: "#39425C",
+        dashHeading: "#C4F1FF",
       },
       colors: {
         text: "#282828",
+        sideText: "#39425C",
+        dashHeading: "#030067",
       },
       fontSize: {},
       height: {},
