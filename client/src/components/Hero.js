@@ -20,7 +20,7 @@ const Hero = () => {
           </article>
         </article>
         <article className="w-full p-5 md:w-6/12">
-          <img className="w-5/6" src={MainScreen} alt="landing" />
+          <img className="w-full" src={MainScreen} alt="landing" />
         </article>
       </section>
     </main>
