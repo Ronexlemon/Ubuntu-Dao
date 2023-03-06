@@ -5,8 +5,12 @@ import Sidebar from "../components/Sidebar";
 import { NavLink } from "react-router-dom";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
+import { ubuntuDao} from "../abi/ubuntuDao";
+import {UbuntuToken} from "../abi/ubuntuToken";
 
 const Dashboard = () => {
+ const UbuntuTokenContractAddress = "0x1E4D739690aBa61e9FC02fA638b1747855c1e144"
+const UbuntuDAOContractAddress = "0xE26bd402D637Dd6530c0111c3066Ee98e14E3de8"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
 
@@ -31,6 +35,35 @@ const Dashboard = () => {
     }
     return web3Provider;
   };
+  const mintTokens = async()=>{
+    try{
+      const signer = await getProviderOrSigner(true);
+      const contract = new Contract(UbuntuTokenContractAddress,UbuntuToken,signer)
+      await contract.mintTokens(UbuntuDAOContractAddress,1000);
+    }catch(error){
+      console.log("mint error",error)
+    }
+  }
+  const activateTokens = async()=>{
+    try{
+      const signer = await getProviderOrSigner(true);
+      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer)
+      await contract.activateTokens(UbuntuTokenContractAddress)
+    }catch(error){
+      console.log("activate error",error)
+    }
+  }
+  const joinCommunity = async()=>{
+    try{
+      const signer = await getProviderOrSigner(true);
+      const contract = new Contract(UbuntuDAOContractAddress ,ubuntuDao,signer)
+      await contract.joinUbuntuDao();
+    }catch(error){
+      console.log("the error", error);
+    }
+    
+
+  }
   useEffect(() => {
     Web3ModalRef.current = new Web3Modal({
       network: "fantomTestnet",
@@ -57,7 +90,8 @@ const Dashboard = () => {
                 />
               </form>
               <div className="flex ">
-                <button className="flex items-center mr-10 border border-black text-black rounded-3xl font-bold  py-2 px-4 w-fit">
+             
+                <button onClick={()=>{joinCommunity()}} className="flex items-center mr-10 border border-black text-black rounded-3xl font-bold  py-2 px-4 w-fit">
                   Join the community
                 </button>
                 {isConnected ? (
