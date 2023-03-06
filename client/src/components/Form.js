@@ -5,12 +5,11 @@ import { useRef, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { SiBitcoincash } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
-import Web3 from "../../web3-storage/web3";
 import { Web3Storage, getFilesFromPath } from "web3.storage";
 
 import { providers, Contract } from "ethers";
 
-const BiderForm = () => {
+const Form = () => {
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
   
@@ -25,6 +24,7 @@ const BiderForm = () => {
   const [_tenderIndex, settenderIndex] = useState("");
   const [bidertypeOfGoods, setTypeOfGoods] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate("");
 
   const btnsubmit = async (e) => {
     e.preventDefault();
@@ -102,10 +102,10 @@ const BiderForm = () => {
           <div className="flex justify-between">
             <div className="flex flex-col">
               <h1 className="font-jakarta text-3xl font-extrabold">
-                Bid For Tender
+                Create a Post
               </h1>
               <p className="py-4 pr-4 font-josefin">
-                Connect wallet to fill in the form below to bid for the tender.
+                Connect wallet to fill in the form below to make a post
               </p>
             </div>
 
@@ -121,7 +121,7 @@ const BiderForm = () => {
               <form onSubmit={handleAddTender}>
                 <div className="space-y-5">
                   <label className="font-josefin pb-6">
-                    Upload Company Documents
+                    Upload image
                   </label>
                   <br />
                   {isLoading ? (
@@ -148,68 +148,34 @@ const BiderForm = () => {
               >
                 <div className="space-y-4">
                   <div className="w-full">
-                    <label className="font-josefin">Company Name</label>
+                    <label className="font-josefin">Message to Post</label>
                     <br />
                     <input
                       className="py-3 pr-24 pl-4 border-2 rounded-lg"
                       type="text"
                       id="company"
                       name="biderCompanyName"
-                      placeholder="Company Name..."
+                      placeholder="Post something..."
                       required
                       onChange={(e) => setBiderCompanyName(e.target.value)}
                       value={biderCompanyName}
                     />
                   </div>
 
-                  <div>
-                    <label className="font-josefin pt-2">
-                      Company Registration Number
-                    </label>
-                    <br />
-                    <input
-                      className="py-3 pr-24 pl-4 border-2 rounded-lg"
-                      type="text"
-                      id="biderCompanyRegistrationNumber"
-                      name="description"
-                      placeholder="SL002900"
-                      required
-                      onChange={(e) =>
-                        setBiderCompanyRegistrationNumber(e.target.value)
-                      }
-                      value={biderCompanyRegistrationNumber}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="font-josefin">Contact</label>
-                    <br />
-                    <input
-                      className="py-3 px-4 border-2 rounded-lg"
-                      type="text"
-                      id="deadline"
-                      name="deadline"
-                      placeholder="0792271915"
-                      required
-                      onChange={(e) => setBiderContact(e.target.value)}
-                      value={biderContact}
-                    />
-                  </div>
-
                   <div className="flex justify-between my-4">
                     <button
                       className="px-10 py-2 border-2 border-secondary-color text-gray-300 rounded-md mb-2 font-josefin"
-                      onClick={() => navigate("/TenderStatus")}
+                      onClick={() => navigate("/dashboard")}
                     >
                       Close
                     </button>
                     <button
-                      className="px-10 py-2 bg-button-color text-[#fff] rounded-md shadow-md mb-2 font-josefin"
+                      className="px-10 py-2 bg-button-color text-black rounded-md shadow-md mb-2 font-josefin"
                       onClick={btnsubmit}
                       type="submit"
                       value="Submit"
                     >
-                      Bid Tender
+                      Post
                     </button>
                   </div>
                 </div>
@@ -221,4 +187,4 @@ const BiderForm = () => {
     </div>
   );
 };
-export default BiderForm;
+export default Form;

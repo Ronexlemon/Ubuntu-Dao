@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import Posts from "../components/Posts";
 import Sidebar from "../components/Sidebar";
@@ -7,12 +7,12 @@ import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 
 const Dashboard = () => {
-  const [userAccount,setUserAccount] = useState();
-  const [isConnected,setConnected] = useState(false)
-  
+  const [userAccount, setUserAccount] = useState();
+  const [isConnected, setConnected] = useState(false);
+
   const Web3ModalRef = useRef();
-   //provide sgner or provider
-   const getProviderOrSigner = async (needSigner = false) => {
+  //provide sgner or provider
+  const getProviderOrSigner = async (needSigner = false) => {
     const provider = await Web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
     // check if network is fantomTestnet
@@ -56,12 +56,25 @@ const Dashboard = () => {
                   name="search"
                 />
               </form>
-              {isConnected?<button className="px-3 py-1 w-fit cursor-pointer rounded-full hover:rounded-none bg-green-400 text-white">
-                Connected
-              </button>:<button onClick={()=>{getProviderOrSigner()}} className="px-3 py-1 w-fit cursor-pointer rounded-full hover:rounded-none bg-button text-white">
-                Connect Wallet
-              </button>}
-              
+              <div className="flex ">
+                <button className="flex items-center mr-10 border border-black text-black rounded-3xl font-bold  py-2 px-4 w-fit">
+                  Join the community
+                </button>
+                {isConnected ? (
+                  <button className="px-3 rounded-3xl cursor-pointer bg-green-400 text-white">
+                    Connected
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      getProviderOrSigner();
+                    }}
+                    className="px-3 rounded-3xl cursor-pointer bg-button text-white"
+                  >
+                    Connect Wallet
+                  </button>
+                )}
+              </div>
             </article>
           </section>
           <section className="w-[90%] mx-auto bg-dashHeading rounded-md text-dashHeading m-5 p-5">

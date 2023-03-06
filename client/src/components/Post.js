@@ -23,6 +23,7 @@ const Post = ({ post }) => {
               <span className="text-black font-normal">{post.account}</span>
             </h3>
             <p>{post.content}</p>
+            <img src={post.image} alt="" className="h-[300px] object-cover w-[600px]" />
             <article className="flex text-gray-500 text-sm items-center gap-10">
               <div className="flex gap-1 items-center">
                 <BiMessageRounded /> <span>{post.comments}</span>

@@ -1,7 +1,10 @@
+import { useState } from "react";
 import MainScreen from "../assets/mainScreen.svg";
 import Navbar from "../components/Navbar";
 
 const LandingPage = () => {
+  const [ active, setActive ] = useState(false);
+
   return (
     <main className="bg-landing bg-no-repeat bg-cover">
       <Navbar />
