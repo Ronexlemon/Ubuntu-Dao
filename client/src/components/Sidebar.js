@@ -5,6 +5,7 @@ import {
   MdPeopleOutline,
 } from "react-icons/md";
 import { SiOpensourceinitiative, SiGoogleanalytics } from "react-icons/si";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <main className="hidden md:block sticky top-0 box-border h-screen lg:w-2/12 text-center bg-sidebg">
@@ -19,7 +20,7 @@ const Sidebar = () => {
             </p>
 
             <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <MdOutlineLocalPostOffice /> Posts
+              <MdOutlineLocalPostOffice /> <Link to="/create_post">Create Post</Link>
             </li>
             <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
               <SiOpensourceinitiative /> Initiatives
