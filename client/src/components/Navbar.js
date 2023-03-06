@@ -1,7 +1,7 @@
 import { useState,useRef,useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Web3Modal from "web3modal";
-import { BrowserProvider, Contract } from "ethers";
+import { providers, Contract } from "ethers";
 
 const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -14,7 +14,7 @@ const Navbar = () => {
   //provide sgner or provider
   const getProviderOrSigner = async (needSigner = false) => {
     const provider = await Web3ModalRef.current.connect();
-    const web3Provider = new BrowserProvider(provider);
+    const web3Provider = new providers.Web3Provider(provider);
     // check if network is fantomTestnet
     const { chainId } = await web3Provider.getNetwork();
     const signer = web3Provider.getSigner();
@@ -61,8 +61,12 @@ const Navbar = () => {
           </ul>
         </article>
         <article className="md:flex hidden items-center justify-end w-3/12">
-          <button   className="py-2 px-4 rounded-3xl cursor-pointer w-fit bg-button text-white font-medium">
-            Get Started
+          <button onClick={()=>{getProviderOrSigner()}}  className="py-2 px-4 rounded-3xl cursor-pointer w-fit bg-button text-white font-medium">
+            <NavLink to="/dashboard">
+              <li>Get Started</li>
+
+            </NavLink>
+            
           </button>
         </article>
         <article className="md:hidden">
