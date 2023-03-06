@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 
 const LandingPage = () => {
   return (
-    <main className="bg-landing">
+    <main className="bg-landing bg-no-repeat bg-cover">
       <Navbar />
       <section className="md:h-[80vh] overflow-hidden flex items-center">
         <section className="container mx-auto flex flex-col justify-between md:flex-row items-center">
