@@ -33,6 +33,7 @@ contract UbuntuDAO {
     mapping(address => uint) public checkIfMember;
     mapping(address => bool) public ubuntuMember;
     mapping(address => bytes32) public verifyUsers;
+    mapping(address => bool) public voted;
 
     //constructor
     constructor() {
@@ -118,6 +119,8 @@ contract UbuntuDAO {
 
     //upvote or downvote
     function upvoteOrdownVote(bool choice, uint _index) public isMember {
+        require(voted[msg.sender] == false, "user Already Voted");
+
         if (choice) {
             upVote(_index);
         }
@@ -130,6 +133,7 @@ contract UbuntuDAO {
             .Approvecount
             .add(1);
         addVerification();
+        voted[msg.sender] = true;
     }
 
     //downVote
@@ -139,6 +143,7 @@ contract UbuntuDAO {
             .declineCount
             .add(1);
         addVerification();
+        voted[msg.sender] = true;
     }
 
     //add verification
@@ -184,9 +189,10 @@ contract UbuntuDAO {
     }
 
     //function get Verified
-    function verifiedUser() external payable {
-        UbuntuDaoTokens.transfer(payable(msg.sender), 10);
-        (bool success, ) = address(this).call{value: amountToVerify}("");
+    function verifiedUser() public payable {
+        UbuntuDaoTokens.transfer(msg.sender, 10);
+        require(msg.value == amountToVerify, "less amount");
+        (bool success, ) = payable(address(this)).call{value: msg.value}("");
         require(success, "unable to transfer");
     }
 
@@ -207,6 +213,41 @@ contract UbuntuDAO {
             "only the owner can delete the information"
         );
         delete allInformation[_index];
+    }
+
+    //function award token
+    function reward(uint _index) public payable {
+        require(msg.value > 0, "less amount please top up");
+
+        (bool success, ) = payable(allInformation[_index].owner).call{
+            value: msg.value
+        }("");
+        require(success, "failed");
+    }
+
+    //get amount for verification
+    function amountForVerification() public view returns (uint) {
+        return amountToVerify;
+    }
+
+    modifier onlyOwners() {
+        require(msg.sender == owner, "only owner can withdraw");
+        _;
+    }
+
+    //withdraw funds
+
+    function withdraw() external payable onlyOwners {
+        uint256 balance = address(this).balance;
+        require(balance > 0, "No balance to withdraw");
+
+        (bool success, ) = payable(owner).call{value: balance}("");
+        require(success, "Withdrawal failed");
+    }
+
+    //function show available balance
+    function showAvailableBalance() public view returns (uint) {
+        return address(this).balance;
     }
 
     receive() external payable {}
