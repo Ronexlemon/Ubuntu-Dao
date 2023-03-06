@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { Web3Storage, getFilesFromPath } from "web3.storage";
 
 import { providers, Contract } from "ethers";
+import { ubuntuDao} from "../abi/ubuntuDao";
 
 const Form = () => {
+    const UbuntuDAOContractAddress = "0xE26bd402D637Dd6530c0111c3066Ee98e14E3de8"
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
   
@@ -17,37 +19,57 @@ const Form = () => {
   
   
   
-  const [biderCompanyName, setBiderCompanyName] = useState("");
+  const [messageinfo, setmessageinfo] = useState("");
   const [biderCompanyRegistrationNumber, setBiderCompanyRegistrationNumber] =
     useState("");
   const [biderContact, setBiderContact] = useState("");
   const [_tenderIndex, settenderIndex] = useState("");
-  const [bidertypeOfGoods, setTypeOfGoods] = useState("");
+  const [imagelink, setImageLink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate("");
+  const Web3ModalRef = useRef();
+  //provide sgner or provider
+  const getProviderOrSigner = async (needSigner = false) => {
+    const provider = await Web3ModalRef.current.connect();
+    const web3Provider = new providers.Web3Provider(provider);
+    // check if network is fantomTestnet
+    const { chainId } = await web3Provider.getNetwork();
+    const signer = web3Provider.getSigner();
+    const accounts = await signer.getAddress();
+    // setUserAccount(accounts);
+    if (chainId !== 4002) {
+      window.alert("Change network to FantomTestnet");
+      throw new Error("Change network to FantomTestnet ");
+    }
+    //setConnected(true);
+    if (needSigner) {
+      const signer = web3Provider.getSigner();
+      return signer;
+    }
+    return web3Provider;
+  };
 
   const btnsubmit = async (e) => {
     e.preventDefault();
-    // const params = [
-    //   _tenderIndex,
-    //   biderCompanyName,
-    //   biderContact,
-    //   bidertypeOfGoods,
-    // ];
+    const params = [
+      
+      messageinfo,
+      imagelink,
+    ];
 
-    // try {
-    //   const signer = await getProviderOrSigner(true);
-    //   const BiderContract = new Contract(
-    //     ContractBiderAddress,
-    //     BiderAbi,
-    //     signer
-    //   );
-    //   const results = await BiderContract.writeBiderDetails(...params);
+    try {
+      const signer = await getProviderOrSigner(true);
+      const contract = new Contract(
+        UbuntuDAOContractAddress,
+        ubuntuDao,
+        signer
+      );
+       await contract.getInformation(...params);
 
-    //   alert("BidSuccessful ");
-    // } catch (error) {
-    //   alert(error);
-    // }
+      alert("post Successful ");
+    } catch (error) {
+      alert(error);
+    }
   };
 
   
@@ -76,7 +98,7 @@ const Form = () => {
       );
       const linkurl = "https://" + cid + ".ipfs.w3s.link/" + `${file.name}`;
 
-      setTypeOfGoods(linkurl);
+      setImageLink(linkurl);
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
@@ -90,11 +112,20 @@ const Form = () => {
     e.preventDefault();
 
     
-    setBiderCompanyName("");
-    setBiderContact("");
-    setBiderCompanyRegistrationNumber("");
+    setmessageinfo("");
+    //setBiderContact("");
+    
     // setTypeOfGoods("");
   }
+  useEffect(() => {
+    Web3ModalRef.current = new Web3Modal({
+      network: "fantomTestnet",
+      providerOptions: {},
+      disableInjectedProvider: false,
+      cacheProvider: false,
+    });
+    getProviderOrSigner();
+  }, []);
   return (
     <div className="flex">
       <div className="mx-auto w-[95%] my-10">
@@ -157,8 +188,8 @@ const Form = () => {
                       name="biderCompanyName"
                       placeholder="Post something..."
                       required
-                      onChange={(e) => setBiderCompanyName(e.target.value)}
-                      value={biderCompanyName}
+                      onChange={(e) => setmessageinfo(e.target.value)}
+                      value={messageinfo}
                     />
                   </div>
 
