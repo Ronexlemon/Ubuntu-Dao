@@ -36,9 +36,10 @@ const Posts = () => {
   const getAllInformation = async()=>{
     try{
       let _data = [];
-      const provider = await getProviderOrSigner();
+      const provider = await getProviderOrSigner(true);
       const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,provider);
-      const results = contract.readInformation();
+      const results = await  contract.readInformation();
+      
       results?.forEach((element)=>{
         _data.push(element);
       });

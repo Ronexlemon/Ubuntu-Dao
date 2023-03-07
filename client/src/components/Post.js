@@ -4,6 +4,13 @@ import {
   BiUpArrow,
   BiDownArrow,
 } from "react-icons/bi";
+// address owner;
+//         string message;
+//         string imageurl;
+//         Status _status;
+//         uint Approvecount;
+//         uint declineCount;
+//         bool trending;
 
 const Post = ({ post }) => {
   return (
@@ -12,21 +19,21 @@ const Post = ({ post }) => {
         <article className="w-1/12">
           <img
             className="h-16 w-16 object-cover rounded-full"
-            src={post.image}
+            src={console.log("image url",post.image)}
             alt="profile"
           />
         </article>
         <article className="w-11/12 flex items-center justify-between">
           <article className="flex flex-col gap-2">
             <h3 className="text-dashHeading font-semibold">
-              {post.name}
-              <span className="text-black font-normal">{post.account}</span>
+              {post.message}
+              <span className="text-black font-normal">{post.owner}</span>
             </h3>
             <p>{post.content}</p>
-            <img src={post.image} alt="" className="h-[300px] object-cover w-[600px]" />
+            <img src={post.imageurl.toString()} alt="" className="h-[300px] object-cover w-[600px]" />
             <article className="flex text-gray-500 text-sm items-center gap-10">
               <div className="flex gap-1 items-center">
-                <BiMessageRounded /> <span>{post.comments}</span>
+                <BiMessageRounded /> <span>{post.message}</span>
               </div>
               <div className="flex gap-1 items-center">
                 <BiHeart /> <span>{post.likes}</span>
