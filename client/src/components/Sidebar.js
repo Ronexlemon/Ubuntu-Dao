@@ -26,7 +26,7 @@ const Sidebar = () => {
               <SiOpensourceinitiative /> Initiatives
             </li>
             <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <SiGoogleanalytics /> Analytics
+              <SiGoogleanalytics /> <Link to="/trending">Trending</Link>
             </li>
             <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
               <MdPeopleOutline /> Community
