@@ -63,7 +63,9 @@ const Posts = () => {
   return (
     <main className="flex flex-col gap-5">
       {data.map((post,index) => (
-        <Post key={index} post={post} />
+        
+        <Post index={index} post={post} />
+        
       ))}
     </main>
   );
