@@ -7,7 +7,7 @@ import { ubuntuDao} from "../abi/ubuntuDao";
 
 
 const Posts = () => {
-  const UbuntuDAOContractAddress = "0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5"
+  const UbuntuDAOContractAddress = "0xB9a0B477C463B0895EBF72F411c6049B63f38b49"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
   const [data,setData] = useState([]);
@@ -33,6 +33,17 @@ const Posts = () => {
     }
     return web3Provider;
   };
+  //upvoting 
+  const upvote = async (choice,_index)=>{
+    try{
+      const signer = await getProviderOrSigner(true);
+      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer);
+      await contract.upvoteOrdownVote(choice,_index);
+
+    }catch(error){
+      console.log("apvote error",error)
+    }
+  }
   const getAllInformation = async()=>{
     try{
       let _data = [];
@@ -64,7 +75,7 @@ const Posts = () => {
     <main className="flex flex-col gap-5">
       {data.map((post,index) => (
         
-        <Post index={index} post={post} />
+        <Post index={index} post={post} upvote={upvote} />
         
       ))}
     </main>

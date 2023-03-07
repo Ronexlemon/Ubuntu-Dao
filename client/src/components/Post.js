@@ -12,7 +12,7 @@ import {
 //         uint declineCount;
 //         bool trending;
 
-const Post = ({ post,index }) => {
+const Post = ({ post,index,upvote }) => {
   return (
     <main className="w-[90%] mx-auto bg-white shadow-lg round-lg p-5">
       <section  className="flex items-center w-full">
@@ -40,9 +40,9 @@ const Post = ({ post,index }) => {
                 <BiHeart /> <span>{post.likes}</span>
                 <div className="flex gap-x-5 justify-evenly items-center">
 
-                <span className="text-green-400 text-sm">{Number(post.Approvecount)}</span><BiUpArrow />
+                <span className="text-green-400 text-sm">{Number(post.Approvecount)}</span><BiUpArrow onClick={()=>{upvote(true,index)}} />
             
-             <BiDownArrow /> <span className="text-red-400 text-sm">{Number(post.declineCount)}</span>
+             <BiDownArrow onClick={()=>{upvote(false,index)}} /> <span className="text-red-400 text-sm">{Number(post.declineCount)}</span>
                 
                 </div>
                 

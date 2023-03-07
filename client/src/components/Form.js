@@ -11,7 +11,7 @@ import { providers, Contract } from "ethers";
 import { ubuntuDao} from "../abi/ubuntuDao";
 
 const Form = () => {
-    const UbuntuDAOContractAddress = "0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5"
+    const UbuntuDAOContractAddress = "0xB9a0B477C463B0895EBF72F411c6049B63f38b49"
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFRjRiMTdhYzY1MjgzNEYxQTBkMTQxNTUwOTRlYTdiYTMzRWEyOWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzcyMzA1NTE0NTMsIm5hbWUiOiJ0ZW5kZXJzcGFjZSJ9.CwbHkp79KAwCjQTpRmlRJWSWKa10VBSJLLv4eMrmVJs";
   
