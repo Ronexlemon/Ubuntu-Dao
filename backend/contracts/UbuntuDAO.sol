@@ -158,12 +158,7 @@ contract UbuntuDAO {
     }
 
     //get all trending information
-    function getTrending()
-        public
-        view
-        isMember
-        returns (Information[] memory trending)
-    {
+    function getTrending() public view returns (Information[] memory trending) {
         uint trendingIfnformation = 0;
 
         for (uint i; i < informationIndex; i++) {
