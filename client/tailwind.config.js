@@ -9,10 +9,10 @@ module.exports = {
       },
       fontFamily: {
         'poppins':['Poppins', 'sans-serif'],
-        'kumbh':['Kumbh', 'sans-serif'],
+        'kumbh':['Kumbh Sans', 'sans-serif'],
       },
       backgroundColor: {
-        button: "#000",
+        button: "#111029",
         section: "#F3F3F3",
         sidebg: "#FEE1D0",
         sideHover: "#ece8ff",

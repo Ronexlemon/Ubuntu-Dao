@@ -1,11 +1,11 @@
-import { useState,useRef,useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 
 const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [userAccount,setUserAccount] = useState();
+  const [userAccount, setUserAccount] = useState();
   const Web3ModalRef = useRef();
 
   const expand = () => {
@@ -40,7 +40,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <main className="w-full h-[50px]">
+    <main className="font-kumbh w-full h-auto">
       <section className="container mx-auto py-2 md:py-5 px-3  flex justify-between items-center">
         <article className="flex items-center md:w-3/12">
           <h1 className="text-orange font-bold text-xl md:text-3xl cursor-pointer">
@@ -60,15 +60,14 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </article>
-        <article className="md:flex hidden items-center justify-end w-3/12">
-          <button onClick={()=>{getProviderOrSigner()}}  className="py-2 px-4 rounded-3xl cursor-pointer w-fit bg-button text-white font-medium">
-            <NavLink to="/dashboard">
-              <li>Get Started</li>
-
-            </NavLink>
-            
-          </button>
-        </article>
+        <button
+          onClick={() => {
+            getProviderOrSigner();
+          }}
+          className="hidden md:flex items-center py-2 px-4 rounded-3xl cursor-pointer w-fit bg-button text-white font-medium"
+        >
+          <NavLink to="/dashboard">Get Started</NavLink>
+        </button>
         <article className="md:hidden">
           <div
             onClick={expand}

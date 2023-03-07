@@ -2,19 +2,16 @@ import { ourPromiseSource } from "../helpers/aboutSource";
 
 const About = () => {
   return (
-    <main className="bg-about bg-no-repeat bg-cover p-2 md:p-5">
-      <section className="container mx-auto">
-        <article className="flex p-2 md:p-5 justify-center">
-          <h1 className="font-bold text-ld md:text-2xl">How it works</h1>
-        </article>
-        <article className="flex flex-col md:flex-row">
+    <main className="bg-about font-kumbh bg-no-repeat bg-cover h-auto flex flex-col justify-center items-center p-2 md:p-5">
+      <section className="container mx-auto h-full flex flex-col justify-around">
+        <article className="flex flex-col md:flex-row py-4">
           <article className="w-full md:w-6/12 p-5">
-            <h3 className="font-bold text-text text-center md:text-left text-2xl md:text-4xl">
-              A Platform built for the community
+            <h3 className="font-semibold text-text text-center md:text-left text-2xl md:text-5xl">
+              A Platform built for the Community
             </h3>
           </article>
           <article className="w-full md:w-6/12 p-5">
-            <p className="text-text text-center md:text-left font-medium">
+            <p className="text-text text-center md:text-left text-lg font-bold">
               A Decentralized verification system that uses a DAO and blockchain
               technology to enable transparent and secure consensus, allowing
               users to easily verify real-world scenarios online and start
@@ -28,7 +25,7 @@ const About = () => {
               key={data.id}
               className="md:w-[30%] flex flex-col gap-1 shadow-2xl md:shadow-none p-2 rounded-md"
             >
-              <div className="flex justify-center md:justify-start">
+              <div className="flex justify-start">
                 <img src={data.image} alt="promise" />
               </div>
               <div className="">
