@@ -7,6 +7,10 @@ module.exports = {
         about: "url('../src/assets/about.svg')",
         landing: "url('../src/assets/background.svg')",
       },
+      fontFamily: {
+        'poppins':['Poppins', 'sans-serif'],
+        'kumbh':['Kumbh', 'sans-serif'],
+      },
       backgroundColor: {
         button: "#000",
         section: "#F3F3F3",
