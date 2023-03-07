@@ -37,8 +37,8 @@ const Trending = () => {
   //upvoting 
   const upvote = async (choice,_index)=>{
     try{
-      const signer = await getProviderOrSigner(true);
-      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer);
+      const provider = await getProviderOrSigner();
+      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,provider);
       await contract.upvoteOrdownVote(choice,_index);
 
     }catch(error){

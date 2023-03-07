@@ -40,7 +40,7 @@ const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
     try{
       const signer = await getProviderOrSigner(true);
       const contract = new Contract(UbuntuTokenContractAddress,UbuntuToken,signer)
-     const re =  await contract.mintTokens(UbuntuDAOContractAddress,10000000000);
+     const re =  await contract.mintTokens(UbuntuDAOContractAddress,100000000);
      console.log("results minting",re)
     }catch(error){
       console.log("mint error",error)
