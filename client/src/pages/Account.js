@@ -12,6 +12,7 @@ const [userAccount, setUserAccount] = useState();
   const [ubuntuTokenAmount, setUbuntuToken] = useState();
   const [ubuntuTokentotal, setUbuntuTokenTotal] = useState();
   const [fantomamount, setFantomAmount] = useState();
+  const  [amountTopurchase,setAmount] = useState();
 
 const Web3ModalRef = useRef();
   //provide sgner or provider
@@ -59,6 +60,28 @@ const Web3ModalRef = useRef();
         console.log(error)
     }
   }
+  const getAmountToVerify = async ()=>{
+    try{
+        const provider = await getProviderOrSigner();
+        const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,provider);
+        const amount = await contract.amountForVerification();
+setAmount(amount)
+        
+    }catch(error){
+        console.log("purchase error", error);
+    }
+  }
+  const purchase = async ()=>{
+    try{
+       
+        const signer = await getProviderOrSigner(true);
+
+        const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer)
+        await contract.verifiedUser({value:amountTopurchase });
+    }catch(error){
+        console.log("purchase error", error);
+    }
+  }
   useEffect(() => {
     Web3ModalRef.current = new Web3Modal({
       network: "fantomTestnet",
@@ -67,8 +90,9 @@ const Web3ModalRef = useRef();
       cacheProvider: false,
     });
     getProviderOrSigner();
-    getUserUbuntuBalance()
-    getUbuntuTokenTotal()
+    getUserUbuntuBalance();
+    getUbuntuTokenTotal();
+    getAmountToVerify();
   }, []);
     return(
         <div className="w-full  h-screen bg-orange-200">
@@ -99,7 +123,7 @@ const Web3ModalRef = useRef();
                 <div className="bg-green-400">
                 <h1>Acquire Ubuntu Token</h1>
                 <div className="flex justify-center items-center ">
-                <button className="border-2 rounded-2xl bg-black text-white">Purchase</button>
+                <button onClick={()=>{purchase()}} className="border-2 rounded-2xl bg-black text-white">Purchase</button>
                 </div>
                 
 
