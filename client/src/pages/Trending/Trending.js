@@ -8,7 +8,7 @@ import {ubuntuDao} from "../../abi/ubuntuDao";
 
 
 const Trending = () => {
-  const UbuntuDAOContractAddress = "0xB9a0B477C463B0895EBF72F411c6049B63f38b49"
+  const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
   const [data,setData] = useState([]);

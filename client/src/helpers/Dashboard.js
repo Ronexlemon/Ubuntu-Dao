@@ -8,9 +8,10 @@ import { providers, Contract } from "ethers";
 import { ubuntuDao} from "../abi/ubuntuDao";
 import {UbuntuToken} from "../abi/ubuntuToken";
 
+
 const Dashboard = () => {
- const UbuntuTokenContractAddress = "0x1a47bfF92Ae4a6d399Fc72294cFC67D3C270EbCf"
-const UbuntuDAOContractAddress = "0xB9a0B477C463B0895EBF72F411c6049B63f38b49"
+ const UbuntuTokenContractAddress = "0x82b09B6Bb7589452eaea691C8CDA0f419f6802fE"
+const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
 
