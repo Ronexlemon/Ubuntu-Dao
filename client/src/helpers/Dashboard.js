@@ -8,9 +8,10 @@ import { providers, Contract } from "ethers";
 import { ubuntuDao} from "../abi/ubuntuDao";
 import {UbuntuToken} from "../abi/ubuntuToken";
 
+
 const Dashboard = () => {
- const UbuntuTokenContractAddress = "0x07DCD270159185725346361CB8462d36b3dAb90F"
-const UbuntuDAOContractAddress = "0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5"
+ const UbuntuTokenContractAddress = "0x82b09B6Bb7589452eaea691C8CDA0f419f6802fE"
+const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
 
@@ -39,7 +40,8 @@ const UbuntuDAOContractAddress = "0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5"
     try{
       const signer = await getProviderOrSigner(true);
       const contract = new Contract(UbuntuTokenContractAddress,UbuntuToken,signer)
-      await contract.mintTokens(UbuntuDAOContractAddress,1000);
+     const re =  await contract.mintTokens(UbuntuDAOContractAddress,100000000);
+     console.log("results minting",re)
     }catch(error){
       console.log("mint error",error)
     }

@@ -3,6 +3,8 @@ import {
   MdOutlineLocalPostOffice,
   MdHelpOutline,
   MdPeopleOutline,
+  MdAccountBalance,
+  MdTrendingUp,
 } from "react-icons/md";
 import { SiOpensourceinitiative, SiGoogleanalytics } from "react-icons/si";
 import { Link } from "react-router-dom";
@@ -26,10 +28,13 @@ const Sidebar = () => {
               <SiOpensourceinitiative /> Initiatives
             </li>
             <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <SiGoogleanalytics /> Analytics
+              <MdTrendingUp /> <Link to="/trending">Trending</Link>
             </li>
             <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
               <MdPeopleOutline /> Community
+            </li>
+            <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
+              <MdAccountBalance /> <Link to="/account">Account</Link>
             </li>
           </ul>
         </section>

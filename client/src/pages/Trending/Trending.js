@@ -1,13 +1,13 @@
 import React, {useEffect,useState,useRef} from "react";
-import Post from "./Post";
+import DisplayTrending from "./DisplayTrending";
 // import { data } from "../helpers/postSource";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
-import { ubuntuDao} from "../abi/ubuntuDao";
-import { ethers } from "ethers";
+import {ubuntuDao} from "../../abi/ubuntuDao";
 
 
-const Posts = () => {
+
+const Trending = () => {
   const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
@@ -37,8 +37,8 @@ const Posts = () => {
   //upvoting 
   const upvote = async (choice,_index)=>{
     try{
-      const signer = await getProviderOrSigner(true);
-      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer);
+      const provider = await getProviderOrSigner();
+      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,provider);
       await contract.upvoteOrdownVote(choice,_index);
 
     }catch(error){
@@ -48,9 +48,9 @@ const Posts = () => {
   const getAllInformation = async()=>{
     try{
       let _data = [];
-      const provider = await getProviderOrSigner();
-      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,provider);
-      const results = await  contract.readInformation();
+      const signer = await getProviderOrSigner(true);
+      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer);
+      const results = await  contract.getTrending();
       
       results?.forEach((element)=>{
         _data.push(element);
@@ -61,16 +61,6 @@ const Posts = () => {
       console.log("all info ",error);
     }
 
-  }
-  //reward
-  const Reward = async (_index)=>{
-    try{
-      const signer = await getProviderOrSigner(true);
-      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer);
-      await contract.reward(_index,{value: ethers.utils.parseEther("0.1")});
-    }catch(error){
-      console.log("error reward",error)
-    }
   }
   useEffect(() => {
     Web3ModalRef.current = new Web3Modal({
@@ -86,11 +76,11 @@ const Posts = () => {
     <main className="flex flex-col gap-5">
       {data.map((post,index) => (
         
-        <Post index={index} post={post} upvote={upvote} Reward={Reward} />
+        <DisplayTrending index={index} post={post} upvote={upvote} />
         
       ))}
     </main>
   );
 };
 
-export default Posts;
+export default Trending;

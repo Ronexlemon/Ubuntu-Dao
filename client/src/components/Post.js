@@ -12,7 +12,7 @@ import {
 //         uint declineCount;
 //         bool trending;
 
-const Post = ({ post }) => {
+const Post = ({ post,index,upvote,Reward }) => {
   return (
     <main className="w-[90%] mx-auto bg-white shadow-lg round-lg p-5">
       <section  className="flex items-center w-full">
@@ -35,15 +35,24 @@ const Post = ({ post }) => {
               <div className="flex gap-1 items-center">
                 <BiMessageRounded /> <span>{Number(post.Approvecount)}</span>
               </div>
-              <div className="flex gap-1 items-center">
+              <div className="flex  gap-x-40 items-center ">
+                {console.log("index",index)}
                 <BiHeart /> <span>{post.likes}</span>
+                <div className="flex gap-x-5 justify-evenly items-center">
+
+                <span className="text-green-400 text-sm">{Number(post.Approvecount)}</span><BiUpArrow onClick={()=>{upvote(true,index)}} />
+            
+             <BiDownArrow onClick={()=>{upvote(false,index)}} /> <span className="text-red-400 text-sm">{Number(post.declineCount)}</span>
+                
+                </div>
+                
+                
               </div>
             </article>
           </article>
           <article className="flex flex-col gap-1 justify-center items-center">
-            <BiUpArrow />
-            <span>{post.votes}</span>
-            <BiDownArrow />
+            <button onClick={()=>{Reward(index)}} className="rounded-2xl bg-black text-white ">Reward</button>
+           
           </article>
         </article>
       </section>

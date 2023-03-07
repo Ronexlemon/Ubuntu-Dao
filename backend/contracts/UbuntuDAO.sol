@@ -33,7 +33,7 @@ contract UbuntuDAO {
     mapping(address => uint) public checkIfMember;
     mapping(address => bool) public ubuntuMember;
     mapping(address => bytes32) public verifyUsers;
-    mapping(address => bool) public voted;
+    mapping(address => mapping(uint => bool)) public voted;
 
     //constructor
     constructor() {
@@ -68,14 +68,8 @@ contract UbuntuDAO {
         string calldata _message,
         string calldata _imageurl
     ) public isMember {
-        require(
-            bytes(_message).length > 0,
-            "please provide the message"
-        );
-        require(
-            bytes(_imageurl).length > 0,
-            "please provide the image"
-        );
+        require(bytes(_message).length > 0, "please provide the message");
+        require(bytes(_imageurl).length > 0, "please provide the image");
         uint index = informationIndex;
         allInformation[index] = Information(
             msg.sender,
@@ -91,12 +85,7 @@ contract UbuntuDAO {
     }
 
     //function readInformation
-    function readInformation()
-        public
-        view
-        
-        returns (Information[] memory info)
-    {
+    function readInformation() public view returns (Information[] memory info) {
         info = new Information[](informationIndex);
         for (uint i = 0; i < informationIndex; i++) {
             info[i] = allInformation[i];
@@ -107,7 +96,6 @@ contract UbuntuDAO {
     function readUserInfomation()
         public
         view
-        isMember
         returns (Information[] memory info)
     {
         uint usermessages = 0;
@@ -127,12 +115,13 @@ contract UbuntuDAO {
 
     //upvote or downvote
     function upvoteOrdownVote(bool choice, uint _index) public isMember {
-        require(voted[msg.sender] == false, "user Already Voted");
+        require(voted[msg.sender][_index] == false, "user Already Voted");
 
-        if (choice) {
+        if (choice == true) {
             upVote(_index);
+        } else {
+            downVote(_index);
         }
-        downVote(_index);
     }
 
     //upvote function
@@ -141,7 +130,7 @@ contract UbuntuDAO {
             .Approvecount
             .add(1);
         addVerification();
-        voted[msg.sender] = true;
+        voted[msg.sender][_index] = true;
     }
 
     //downVote
@@ -151,7 +140,7 @@ contract UbuntuDAO {
             .declineCount
             .add(1);
         addVerification();
-        voted[msg.sender] = true;
+        voted[msg.sender][_index] = true;
     }
 
     //add verification
@@ -169,12 +158,7 @@ contract UbuntuDAO {
     }
 
     //get all trending information
-    function getTrending()
-        public
-        view
-        isMember
-        returns (Information[] memory trending)
-    {
+    function getTrending() public view returns (Information[] memory trending) {
         uint trendingIfnformation = 0;
 
         for (uint i; i < informationIndex; i++) {
