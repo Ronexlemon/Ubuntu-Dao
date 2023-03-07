@@ -4,6 +4,9 @@ const {ethers} = require("hardhat")
 //2
 //UbuntuTokenContractAddress: 0x1E4D739690aBa61e9FC02fA638b1747855c1e144
 //UbuntuDAOContractAddress: 0xE26bd402D637Dd6530c0111c3066Ee98e14E3de8
+//3
+//UbuntuTokenContractAddress: 0x07DCD270159185725346361CB8462d36b3dAb90F
+//UbuntuDAOContractAddress: 0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5
 async function main(){
     //get the contract for tokens
     const UbuntuTokenContract = await ethers.getContractFactory("UbuntuTokens");

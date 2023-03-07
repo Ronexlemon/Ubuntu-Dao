@@ -68,6 +68,14 @@ contract UbuntuDAO {
         string calldata _message,
         string calldata _imageurl
     ) public isMember {
+        require(
+            bytes(_message).length > 0,
+            "please provide the message"
+        );
+        require(
+            bytes(_imageurl).length > 0,
+            "please provide the image"
+        );
         uint index = informationIndex;
         allInformation[index] = Information(
             msg.sender,
@@ -86,7 +94,7 @@ contract UbuntuDAO {
     function readInformation()
         public
         view
-        isMember
+        
         returns (Information[] memory info)
     {
         info = new Information[](informationIndex);
