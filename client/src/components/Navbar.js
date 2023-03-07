@@ -44,7 +44,7 @@ const Navbar = () => {
       <section className="container mx-auto py-2 md:py-5 px-3  flex justify-between items-center">
         <article className="flex items-center md:w-3/12">
           <h1 className="text-orange font-bold text-xl md:text-3xl cursor-pointer">
-            Ubuntu Dao
+            Ubuntu DAO
           </h1>
         </article>
         <article className="hidden md:flex items-center justify-center w-6/12">

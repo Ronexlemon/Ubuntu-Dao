@@ -6,9 +6,9 @@ const LandingPage = () => {
   const [ active, setActive ] = useState(false);
 
   return (
-    <main className="bg-landing bg-no-repeat bg-cover">
+    <main className="bg-landing bg-no-repeat bg-cover h-screen">
       <Navbar />
-      <section className="md:h-[80vh] overflow-hidden flex items-center">
+      <section className="md:h-screen overflow-hidden flex items-center">
         <section className="container mx-auto flex flex-col justify-between md:flex-row items-center">
           <article className="w-full flex items-center flex-col p-5 md:w-6/12 text-center md:text-left md:block">
             <h1 className="font-extrabold text-text text-3xl md:text-5xl lg:text-6xl p-2 md:p-0 md:pb-5">

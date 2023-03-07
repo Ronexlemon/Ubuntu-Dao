@@ -2,7 +2,7 @@ import { ourPromiseSource } from "../helpers/aboutSource";
 
 const About = () => {
   return (
-    <main className="bg-about p-2 md:p-5">
+    <main className="bg-about bg-no-repeat bg-cover p-2 md:p-5">
       <section className="container mx-auto">
         <article className="flex p-2 md:p-5 justify-center">
           <h1 className="font-bold text-ld md:text-2xl">How it works</h1>
