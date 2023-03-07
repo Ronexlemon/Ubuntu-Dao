@@ -90,6 +90,7 @@ const UbuntuDAOContractAddress = "0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5"
                 />
               </form>
               <div className="flex ">
+              
              
                 <button onClick={()=>{joinCommunity()}} className="flex items-center mr-10 border border-black text-black rounded-3xl font-bold  py-2 px-4 w-fit">
                   Join the community
