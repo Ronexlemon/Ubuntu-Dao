@@ -9,8 +9,8 @@ import { ubuntuDao} from "../abi/ubuntuDao";
 import {UbuntuToken} from "../abi/ubuntuToken";
 
 const Dashboard = () => {
- const UbuntuTokenContractAddress = "0x1E4D739690aBa61e9FC02fA638b1747855c1e144"
-const UbuntuDAOContractAddress = "0xE26bd402D637Dd6530c0111c3066Ee98e14E3de8"
+ const UbuntuTokenContractAddress = "0x07DCD270159185725346361CB8462d36b3dAb90F"
+const UbuntuDAOContractAddress = "0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
 

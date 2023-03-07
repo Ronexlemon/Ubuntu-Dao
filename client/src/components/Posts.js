@@ -7,7 +7,7 @@ import { ubuntuDao} from "../abi/ubuntuDao";
 
 
 const Posts = () => {
-  const UbuntuDAOContractAddress = "0xE26bd402D637Dd6530c0111c3066Ee98e14E3de8"
+  const UbuntuDAOContractAddress = "0xF75D4Bb568c93C1e88690B98B54814ACFE349ED5"
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
   const [data,setData] = useState([]);
@@ -36,7 +36,7 @@ const Posts = () => {
   const getAllInformation = async()=>{
     try{
       let _data = [];
-      const provider = await getProviderOrSigner(true);
+      const provider = await getProviderOrSigner();
       const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,provider);
       const results = await  contract.readInformation();
       
