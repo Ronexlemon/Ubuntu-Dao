@@ -33,7 +33,7 @@ import {
                 
                   <div className="flex gap-x-40 justify-evenly items-center">
                     <div>
-                        {Number(post.Approvecount)>=Number(post.declineCount)?<h3>Likes:{Number(post.Approvecount)}</h3>:<h3>DisLikes:{Number(post.declineCount)}</h3> }
+                        {Number(post.Approvecount)>=Number(post.declineCount)?<h3>Likes: <span className="text-green-400 px-5">{Number(post.Approvecount)}</span> </h3>:<h3>DisLikes: <span className="text-red-400 px-5">{Number(post.declineCount)}</span></h3> }
                     
                     </div>
   

@@ -12,7 +12,7 @@ import {
 //         uint declineCount;
 //         bool trending;
 
-const Post = ({ post,index,upvote }) => {
+const Post = ({ post,index,upvote,Reward }) => {
   return (
     <main className="w-[90%] mx-auto bg-white shadow-lg round-lg p-5">
       <section  className="flex items-center w-full">
@@ -51,6 +51,7 @@ const Post = ({ post,index,upvote }) => {
             </article>
           </article>
           <article className="flex flex-col gap-1 justify-center items-center">
+            <button onClick={()=>{Reward(index)}} className="rounded-2xl bg-black text-white ">Reward</button>
            
           </article>
         </article>

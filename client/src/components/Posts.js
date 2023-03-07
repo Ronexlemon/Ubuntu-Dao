@@ -4,6 +4,7 @@ import Post from "./Post";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { ubuntuDao} from "../abi/ubuntuDao";
+import { ethers } from "ethers";
 
 
 const Posts = () => {
@@ -61,6 +62,16 @@ const Posts = () => {
     }
 
   }
+  //reward
+  const Reward = async (_index)=>{
+    try{
+      const signer = await getProviderOrSigner(true);
+      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer);
+      await contract.reward(_index,{value: ethers.utils.parseEther("0.1")});
+    }catch(error){
+      console.log("error reward",error)
+    }
+  }
   useEffect(() => {
     Web3ModalRef.current = new Web3Modal({
       network: "fantomTestnet",
@@ -75,7 +86,7 @@ const Posts = () => {
     <main className="flex flex-col gap-5">
       {data.map((post,index) => (
         
-        <Post index={index} post={post} upvote={upvote} />
+        <Post index={index} post={post} upvote={upvote} Reward={Reward} />
         
       ))}
     </main>
