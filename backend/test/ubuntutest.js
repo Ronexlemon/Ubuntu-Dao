@@ -20,7 +20,7 @@ describe("deploy Contracts", function(){
     [owner, otherAccount] = await ethers.getSigners();
     anotheraccount = await ethers.getSigners(0);
 
-
+///test it
     })
 it("should deploy and return total supply to 0", async function(){
    const result = await ubuntuTokenContract.totalSupply();
