@@ -17,25 +17,36 @@ const Sidebar = () => {
       <section className="h-[calc(100vh_-_48px)] flex flex-col justify-between">
         <section className="">
           <ul className="flex flex-col gap-5">
+          <Link to="/dashboard">
             <p className="text-lg flex items-center gap-2 font-bold text-sideText">
               <MdDashboard /> Dashboard
             </p>
-
-            <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <MdOutlineLocalPostOffice /> <Link to="/create_post">Create Post</Link>
-            </li>
-            <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <SiOpensourceinitiative /> Initiatives
-            </li>
-            <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <MdTrendingUp /> <Link to="/trending">Trending</Link>
-            </li>
-            <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <MdPeopleOutline /> Community
-            </li>
-            <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
-              <MdAccountBalance /> <Link to="/account">Account</Link>
-            </li>
+            </Link>
+            <Link to="/create_post">
+              <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
+                <MdOutlineLocalPostOffice /> Create Post
+              </li>
+            </Link>
+            <Link to="">
+              <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
+                <SiOpensourceinitiative /> Initiatives
+              </li>
+            </Link>
+            <Link to="">
+              <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
+                <MdTrendingUp /> <Link to="/trending">Trending</Link>
+              </li>
+            </Link>
+            <Link to="">
+              <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
+                <MdPeopleOutline /> Community
+              </li>
+            </Link>
+            <Link to="/account">
+              <li className="flex items-center gap-1  font-semibold cursor-pointer p-1 text-sideText py-1 px-3 hover:bg-sideHover">
+                <MdPeopleOutline /> Accounts
+              </li>
+            </Link>
           </ul>
         </section>
         <section className="py-5">

@@ -127,7 +127,7 @@ const Form = () => {
     getProviderOrSigner();
   }, []);
   return (
-    <div className="flex bg-[#e6e4e4] h-screen">
+    <div className="flex bg-[#EEEFF0] bg-cover w-full h-screen">
       <div className="mx-auto w-[95%] my-10">
         <div className="flex  flex-col justify-center">
           <div className="flex justify-between">
@@ -167,9 +167,11 @@ const Form = () => {
                   name="file"
                   className="border-2 py-3 pl-3 rounded-md"
                 />
-                <button className="button" type="submit">
+
+                <button className="border p-3 bg-sidebg shadow-lg m-2 border-slate-500 rounded-sm" type="submit">
                   Upload file
                 </button>
+                <p className="text-red-600 text-sm">Please upload file before submitting</p>
               </form>
             </div>
             <div className="my-6 w-full">

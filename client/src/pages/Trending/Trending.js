@@ -1,17 +1,16 @@
-import React, {useEffect,useState,useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import DisplayTrending from "./DisplayTrending";
 // import { data } from "../helpers/postSource";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
-import {ubuntuDao} from "../../abi/ubuntuDao";
-
-
+import { ubuntuDao } from "../../abi/ubuntuDao";
+import Sidebar from "../../components/Sidebar";
 
 const Trending = () => {
-  const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
+  const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d";
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
-  const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
 
   const Web3ModalRef = useRef();
   //provide sgner or provider
@@ -34,34 +33,39 @@ const Trending = () => {
     }
     return web3Provider;
   };
-  //upvoting 
-  const upvote = async (choice,_index)=>{
-    try{
+  //upvoting
+  const upvote = async (choice, _index) => {
+    try {
       const provider = await getProviderOrSigner();
-      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,provider);
-      await contract.upvoteOrdownVote(choice,_index);
-
-    }catch(error){
-      console.log("apvote error",error)
+      const contract = new Contract(
+        UbuntuDAOContractAddress,
+        ubuntuDao,
+        provider
+      );
+      await contract.upvoteOrdownVote(choice, _index);
+    } catch (error) {
+      console.log("apvote error", error);
     }
-  }
-  const getAllInformation = async()=>{
-    try{
+  };
+  const getAllInformation = async () => {
+    try {
       let _data = [];
       const signer = await getProviderOrSigner(true);
-      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer);
-      const results = await  contract.getTrending();
-      
-      results?.forEach((element)=>{
+      const contract = new Contract(
+        UbuntuDAOContractAddress,
+        ubuntuDao,
+        signer
+      );
+      const results = await contract.getTrending();
+
+      results?.forEach((element) => {
         _data.push(element);
       });
       setData(_data);
-
-    }catch(error){
-      console.log("all info ",error);
+    } catch (error) {
+      console.log("all info ", error);
     }
-
-  }
+  };
   useEffect(() => {
     Web3ModalRef.current = new Web3Modal({
       network: "fantomTestnet",
@@ -73,13 +77,14 @@ const Trending = () => {
     getAllInformation();
   }, []);
   return (
-    <main className="flex flex-col gap-5">
-      {data.map((post,index) => (
-        
-        <DisplayTrending index={index} post={post} upvote={upvote} />
-        
-      ))}
-    </main>
+    <section className="flex bg-[#EEEFF0]">
+      <Sidebar />
+      <main className="flex flex-col gap-5">
+        {data.map((post, index) => (
+          <DisplayTrending index={index} post={post} upvote={upvote} />
+        ))}
+      </main>
+    </section>
   );
 };
 
