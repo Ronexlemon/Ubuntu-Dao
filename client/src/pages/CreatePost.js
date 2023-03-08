@@ -1,8 +1,10 @@
 import Form from "../components/Form";
+import Sidebar from "../components/Sidebar";
 
 const CreatePost = () => {
     return ( 
-        <main>
+        <main className="flex">
+            <Sidebar />
             <Form />
         </main>
      );

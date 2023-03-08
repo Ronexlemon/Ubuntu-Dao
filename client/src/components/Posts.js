@@ -93,7 +93,7 @@ const Posts = () => {
 
   return (
     <main className="container mx-auto m-5 p-5 flex  flex-col gap-5">
-      {datas.map((post, index) => (
+      {data.map((post, index) => (
         <Post index={index} post={post} upvote={upvote} Reward={Reward} />
       ))}
     </main>
