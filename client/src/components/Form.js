@@ -127,9 +127,9 @@ const Form = () => {
     getProviderOrSigner();
   }, []);
   return (
-    <div className="flex">
+    <div className="flex bg-[#e6e4e4] h-screen">
       <div className="mx-auto w-[95%] my-10">
-        <div className="">
+        <div className="flex  flex-col justify-center">
           <div className="flex justify-between">
             <div className="flex flex-col">
               <h1 className="font-jakarta text-3xl font-extrabold">
@@ -147,7 +147,7 @@ const Form = () => {
             </div> */}
           </div>
 
-          <div className="bg-white w-1/3 shadow-sm my-4 p-10 rounded-md">
+          <div className="bg-white w-[70%] shadow-sm my-4 p-10 rounded-md">
             <div>
               <form onSubmit={handleAddTender}>
                 <div className="space-y-5">
