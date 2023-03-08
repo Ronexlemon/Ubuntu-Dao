@@ -1,15 +1,15 @@
 ## Requirements
-1.Fantom Tokens (testnet)_
-2.Metamask Wallet_
-N/B -> You Need to Click The Join Community button On the DashBoard in order to be allowed to Interact With the application_
+1.Fantom Tokens (testnet)<br/>
+2.Metamask Wallet<br/>
+N/B -> You Need to Click The Join Community button On the DashBoard in order to be allowed to Interact With the application<br/>
 ## Application Aspects (Main Functionality)
-1.Able to upload Image and information into a decentralized application_
-2.Verify Real Time Information (throuh upvote and DownVote)_
-3.Able to reward Fantom Tokens to the owner of the post_
-4. Purchase our own Token (Ubuntu Token) Which are used in the application in order to interact with it_
-5. Provide Trnding Information in Real Time_
+1.Able to upload Image and information into a decentralized application<br/>
+2.Verify Real Time Information (throuh upvote and DownVote)<br/>
+3.Able to reward Fantom Tokens to the owner of the post<br/>
+4. Purchase our own Token (Ubuntu Token) Which are used in the application in order to interact with it<br/>
+5. Provide Trnding Information in Real Time<br/>
 # Live Link
-https://ubuntu-dao-mauve.vercel.app/_
+https://ubuntu-dao-mauve.vercel.app/<br/>
 # Ubuntu-DAO
 
 Ubuntu DAO is a Decentralized verification system that leverages the power of DAO and blockchain technology to enable transparent and secure consensus. It allows users to easily verify real-world scenarios online and start community initiatives.
