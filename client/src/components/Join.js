@@ -2,7 +2,7 @@
 
 const Join = () => {
   return (
-    <section className="bg-join h-screen flex justify-around items-center"></section>
+    <section className="bg-join h-screen flex justify-around items-center bg-cover"></section>
   );
 };
 

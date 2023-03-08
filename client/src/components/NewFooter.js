@@ -1,6 +1,6 @@
 const NewFooter = () => {
   return (
-    <footer className="bg-landing flex flex-col md:flex-row justify-around items-center font-kumbh h-auto ">
+    <footer className="bg-landing flex flex-col md:flex-row justify-around items-center font-kumbh h-auto bg-cover ">
       <section className="container mx-auto flex">
         <article className="w-6/12 m-5 p-5">
           <h1 className="text-3xl font-bold">
