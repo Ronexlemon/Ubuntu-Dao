@@ -6,21 +6,21 @@ const NewFooter = () => {
           <h1 className="text-3xl font-bold">
             Interested in Helping out? Join with us now
           </h1>
-          <h5 className="text-sm">
+          <h5 className="text-sm my-2">
             Receive updates on our progress, community initiatives
           </h5>
           <h4 className="text-sm">Newsletter</h4>
-          <div className="bg-[#EFEFFF] p-5 rounded-lg">
+          <div className=" py-5 rounded-lg">
             <h3 className="font-bold">Get monthly updates on your inbox</h3>
-            <span className="flex items-center justify-center bg-white rounded-md">
+            <span className="flex items-center justify-center  rounded-md">
               <input
                 type="email"
                 name=""
                 id=""
                 placeholder="Enter your Email.."
-                className="p-3 w-[80%]"
+                className="p-3 outline-none w-[80%]"
               />
-              <button className="rounded-2xl border text-white bg-gradient-to-r from-[#2B59FF] to-[#BB2BFF] border-none px-5 py-3 my-2">
+              <button className="rounded-r-2xl border text-white bg-gradient-to-r from-[#2B59FF] to-[#BB2BFF] border-none px-5 py-3 my-2">
                 Subscribe
               </button>
             </span>

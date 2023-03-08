@@ -9,9 +9,8 @@ const Home = () => {
     <main className="font-poppins">
       <LandingPage />
       <About />
-
+      <Join />
       <NewFooter />
-      {/* <Footer /> */}
     </main>
   );
 };
