@@ -2,7 +2,6 @@ import About from "../components/About";
 import Footer from "../components/Footer";
 import Join from "../components/Join";
 import LandingPage from "../components/LandingPage";
-import NewFooter from "../components/NewFooter";
 
 const Home = () => {
   return (
@@ -10,8 +9,7 @@ const Home = () => {
       <LandingPage />
       <About />
 
-      <NewFooter />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 };
