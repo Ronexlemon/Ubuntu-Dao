@@ -5,13 +5,13 @@ import Sidebar from "../components/Sidebar";
 import { NavLink } from "react-router-dom";
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
-import { ubuntuDao} from "../abi/ubuntuDao";
-import {UbuntuToken} from "../abi/ubuntuToken";
-
+import { ubuntuDao } from "../abi/ubuntuDao";
+import { UbuntuToken } from "../abi/ubuntuToken";
 
 const Dashboard = () => {
- const UbuntuTokenContractAddress = "0x82b09B6Bb7589452eaea691C8CDA0f419f6802fE"
-const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
+  const UbuntuTokenContractAddress =
+    "0x82b09B6Bb7589452eaea691C8CDA0f419f6802fE";
+  const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d";
   const [userAccount, setUserAccount] = useState();
   const [isConnected, setConnected] = useState(false);
 
@@ -36,36 +36,46 @@ const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
     }
     return web3Provider;
   };
-  const mintTokens = async()=>{
-    try{
+  const mintTokens = async () => {
+    try {
       const signer = await getProviderOrSigner(true);
-      const contract = new Contract(UbuntuTokenContractAddress,UbuntuToken,signer)
-     const re =  await contract.mintTokens(UbuntuDAOContractAddress,100000000);
-     console.log("results minting",re)
-    }catch(error){
-      console.log("mint error",error)
+      const contract = new Contract(
+        UbuntuTokenContractAddress,
+        UbuntuToken,
+        signer
+      );
+      const re = await contract.mintTokens(UbuntuDAOContractAddress, 100000000);
+      console.log("results minting", re);
+    } catch (error) {
+      console.log("mint error", error);
     }
-  }
-  const activateTokens = async()=>{
-    try{
+  };
+  const activateTokens = async () => {
+    try {
       const signer = await getProviderOrSigner(true);
-      const contract = new Contract(UbuntuDAOContractAddress,ubuntuDao,signer)
-      await contract.activateTokens(UbuntuTokenContractAddress)
-    }catch(error){
-      console.log("activate error",error)
+      const contract = new Contract(
+        UbuntuDAOContractAddress,
+        ubuntuDao,
+        signer
+      );
+      await contract.activateTokens(UbuntuTokenContractAddress);
+    } catch (error) {
+      console.log("activate error", error);
     }
-  }
-  const joinCommunity = async()=>{
-    try{
+  };
+  const joinCommunity = async () => {
+    try {
       const signer = await getProviderOrSigner(true);
-      const contract = new Contract(UbuntuDAOContractAddress ,ubuntuDao,signer)
+      const contract = new Contract(
+        UbuntuDAOContractAddress,
+        ubuntuDao,
+        signer
+      );
       await contract.joinUbuntuDao();
-    }catch(error){
+    } catch (error) {
       console.log("the error", error);
     }
-    
-
-  }
+  };
   useEffect(() => {
     Web3ModalRef.current = new Web3Modal({
       network: "fantomTestnet",
@@ -92,9 +102,12 @@ const UbuntuDAOContractAddress = "0x10F2DA7A73Efa54f97Cea89eC4C59c25855Bd95d"
                 />
               </form>
               <div className="flex ">
-              
-             
-                <button onClick={()=>{joinCommunity()}} className="flex items-center mr-10 border border-black text-black rounded-3xl font-bold  py-2 px-4 w-fit">
+                <button
+                  onClick={() => {
+                    joinCommunity();
+                  }}
+                  className="flex items-center mr-10 border border-black text-black rounded-3xl font-bold  py-2 px-4 w-fit"
+                >
                   Join the community
                 </button>
                 {isConnected ? (
