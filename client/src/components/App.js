@@ -1,6 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+<<<<<<< HEAD
 import Dashboard from "../pages/Dashboard";
+=======
+>>>>>>> fb43292c135bdab27529d9effb145fbb037f74ff
 import CreatePost from "../pages/CreatePost";
+import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import Trending from "../pages/Trending/Trending";
 import Account from "../pages/Account";
