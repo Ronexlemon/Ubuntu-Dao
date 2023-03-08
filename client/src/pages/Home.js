@@ -1,5 +1,5 @@
 import About from "../components/About";
-import Footer from "../components/Footer";
+import NewFooter from "../components/NewFooter";
 import Join from "../components/Join";
 import LandingPage from "../components/LandingPage";
 
@@ -8,8 +8,8 @@ const Home = () => {
     <main className="font-poppins">
       <LandingPage />
       <About />
-
-      <Footer />
+      <Join />
+      <NewFooter />
     </main>
   );
 };

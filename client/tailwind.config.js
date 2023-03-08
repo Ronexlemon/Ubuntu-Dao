@@ -6,10 +6,11 @@ module.exports = {
       backgroundImage: {
         about: "url('../src/assets/about.svg')",
         landing: "url('../src/assets/background.svg')",
+        join: "url('../src/assets/join.svg')",
       },
       fontFamily: {
-        'poppins':['Poppins', 'sans-serif'],
-        'kumbh':['Kumbh Sans', 'sans-serif'],
+        poppins: ["Poppins", "sans-serif"],
+        kumbh: ["Kumbh Sans", "sans-serif"],
       },
       backgroundColor: {
         button: "#111029",
